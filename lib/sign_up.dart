@@ -83,7 +83,7 @@ class _SignUpState extends State<SignUp> {
                         style: TextStyle(
                             fontFamily: 'Source Sans Pro',
                             fontSize: 25,
-                            color: Colors.teal,
+                            color: Colors.blue,
                             letterSpacing: 2.5,
                             fontWeight: FontWeight.bold),
                       ),
@@ -161,7 +161,7 @@ class _SignUpState extends State<SignUp> {
                         // dropdownColor: Colors.green,
                         hint: Text("Select a item"),
                         style: TextStyle(
-                          color: Colors.green,
+                          color: Colors.blue,
                           fontSize: 20,
                         ),
                         isExpanded: true,
@@ -229,6 +229,7 @@ class _SignUpState extends State<SignUp> {
                             height: 42.0,
                             child: Text(
                               'Sign Up',
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ),
@@ -246,7 +247,7 @@ class _SignUpState extends State<SignUp> {
                             style: TextStyle(
                                 fontFamily: 'Source Sans Pro',
                                 fontSize: 15,
-                                color: Colors.teal,
+                                color: Colors.blue,
                                 letterSpacing: 2.5,
                                 fontWeight: FontWeight.bold),
                           ),

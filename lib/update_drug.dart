@@ -68,7 +68,7 @@ class _UpdateDrugState extends State<UpdateDrug> {
                           style: TextStyle(
                               fontFamily: 'Source Sans Pro',
                               fontSize: 25,
-                              color: Colors.teal,
+                              color: Colors.blue,
                               letterSpacing: 2.5,
                               fontWeight: FontWeight.bold),
                         ),
@@ -362,6 +362,7 @@ class _UpdateDrugState extends State<UpdateDrug> {
                               height: 42.0,
                               child: Text(
                                 'Update',
+                                style: TextStyle(color: Colors.white),
                               ),
                             ),
                           ),
