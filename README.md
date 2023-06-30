@@ -12,7 +12,7 @@ Therefore, the pharmaceutical companies in Bangladesh need to find a system that
   <img src="https://github.com/Saruj-chy/drug_serialize/blob/main/ss_drug_serialize/splash.jpg"   width="200" title="Sign In">
   <img src="https://github.com/Saruj-chy/drug_serialize/blob/main/ss_drug_serialize/sign_in.jpg"   width="200" title="Sign In">
   <img src="https://github.com/Saruj-chy/drug_serialize/blob/main/ss_drug_serialize/sign_up.jpg"   width="200" title="Sign Up">
-  <img src="https://github.com/Saruj-chy/drug_serialize/blob/main/ss_drug_serialize/sign_in_dropdown.jpg"   width="200" title="Sign Up 2">
+  <img src="https://github.com/Saruj-chy/drug_serialize/blob/main/ss_drug_serialize/sign_up_dropdown.jpg"   width="200" title="Sign Up 2">
   
 </p>
 
