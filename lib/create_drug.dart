@@ -57,7 +57,6 @@ class _CreateDrugState extends State<CreateDrug> {
                           },
                           decoration: InputDecoration(
                             labelText: 'Enter your drug name',
-                            enabled: false,
                             contentPadding:
                             EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                             border: OutlineInputBorder(

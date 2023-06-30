@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:drug_serialize/dashboard.dart';
 import 'package:drug_serialize/sign_in.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +23,16 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getCurrentUSer() ;
+
+    Timer(
+      const Duration(seconds: 10),
+          () {
+        print("push") ;
+        // Navigate to your favorite place
+            getCurrentUSer() ;
+      },
+
+    );
 
   }
 

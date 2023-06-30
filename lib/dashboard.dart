@@ -10,11 +10,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 // import 'firebase_messaging.dart';
-
+// enum Dash{
+//   admin
+// }
+ String admin = "Admin" ;
 
 class Dashboard extends StatefulWidget {
   static String id = "dashboard";
   static String admin = "Admin" ;
+
   const Dashboard({Key? key}) : super(key: key);
 
   @override
@@ -24,7 +28,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   final _auth =  FirebaseAuth.instance ;
   final _firestore = FirebaseFirestore.instance;
-  late String email, uid, type = "Patient" ;
+  late String email, uid, userType = "Patient" ;
 
 
 
@@ -85,8 +89,6 @@ class _DashboardState extends State<Dashboard> {
   }
 
 
-
-
   void getMessages() async {
     final messages = await _firestore.collection("drug_details").get();
     // print(messages.docs) ;
@@ -118,7 +120,7 @@ class _DashboardState extends State<Dashboard> {
     if(usersData.exists){
       var dataObj = usersData.data() as Map;
       setState(() {
-        type = dataObj['type'] ;
+        userType = dataObj['type'] ;
       });
     }
   }
@@ -168,7 +170,7 @@ class _DashboardState extends State<Dashboard> {
             title: Text('Dashboard', style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 30.0),),
             automaticallyImplyLeading: false,
             actions: <Widget>[
-              type==Dashboard.admin ?
+              userType==admin ?
                 IconButton(
                   icon: Icon(
                     Icons.add_circle,
@@ -217,6 +219,7 @@ class _DashboardState extends State<Dashboard> {
                       final docId = drug.id ;
 
                       final messageBubble = DrugContainer(
+                        userType: userType,
                         name: name,
                         price: price,
                         quantity: quantity,
@@ -251,12 +254,15 @@ class _DashboardState extends State<Dashboard> {
 
 
 class DrugContainer extends StatelessWidget {
-  DrugContainer({required this.name, required this.price, required this.quantity, required this.type,
+  DrugContainer({required this.userType, required this.name, required this.price, required this.quantity, required this.type,
     required this.gtin, required this.serial_number, required this.lot_number, required this.expire_date, required this.docId });
-  final String name, price, quantity, type, gtin, serial_number, lot_number, expire_date, docId;
+  final String userType, name, price, quantity, type, gtin, serial_number, lot_number, expire_date, docId;
+
+
 
   @override
   Widget build(BuildContext context) {
+    print("userType: "+ userType +"  admin: "+ Dashboard.admin) ;
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Material(
@@ -279,7 +285,8 @@ class DrugContainer extends StatelessWidget {
                       style: TextStyle(color: Colors.white, fontSize: 22.0, fontWeight: FontWeight.bold,),
                     ),
                   ),
-                  IconButton(
+
+                  userType==Dashboard.admin? IconButton(
                     icon: Icon(
                       Icons.add_circle,
                       color: Colors.white,
@@ -292,11 +299,12 @@ class DrugContainer extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => UpdateDrug(
-                        uid: docId,
-                        ),
+                            uid: docId,
+                          ),
                         ),);
                     },
-                  )
+                  ): Container(),
+
                 ],
               ),
               Row(
