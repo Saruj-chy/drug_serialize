@@ -1,10 +1,15 @@
 import 'package:drug_serialize/create_drug.dart';
+import 'package:drug_serialize/notificationService/local_notification_service.dart';
 import 'package:drug_serialize/sign_in.dart';
 import 'package:drug_serialize/update_drug.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
+// import 'firebase_messaging.dart';
 
 
 class Dashboard extends StatefulWidget {
@@ -21,12 +26,66 @@ class _DashboardState extends State<Dashboard> {
   final _firestore = FirebaseFirestore.instance;
   late String email, uid, type = "Patient" ;
 
+
+
   @override
   void initState() {
     super.initState();
-    getMessages() ;
+    // getMessages() ;
     getCurrentUSer() ;
+
+    // 1. This method call when app in terminated state and you get a notification
+    // when you click on notification app open from terminated state and you can get notification data in this method
+
+    FirebaseMessaging.instance.getInitialMessage().then(
+          (message) {
+        print("FirebaseMessaging.instance.getInitialMessage");
+        if (message != null) {
+          print("New Notification");
+          // if (message.data['_id'] != null) {
+          //   Navigator.of(context).push(
+          //     MaterialPageRoute(
+          //       builder: (context) => DemoScreen(
+          //         id: message.data['_id'],
+          //       ),
+          //     ),
+          //   );
+          // }
+        }
+      },
+    );
+
+    // 2. This method only call when App in forground it mean app must be opened
+    FirebaseMessaging.onMessage.listen(
+          (message) {
+        print("FirebaseMessaging.onMessage.listen");
+        if (message.notification != null) {
+          print(message.notification!.title);
+          print(message.notification!.body);
+          print("message.data11 ${message.data}");
+          LocalNotificationService.createanddisplaynotification(message);
+
+        }
+      },
+    );
+
+    // 3. This method only call when App in background and not terminated(not closed)
+    FirebaseMessaging.onMessageOpenedApp.listen(
+          (message) {
+        print("FirebaseMessaging.onMessageOpenedApp.listen");
+        if (message.notification != null) {
+          print(message.notification!.title);
+          print(message.notification!.body);
+          print("message.data22 ${message.data['_id']}");
+        }
+      },
+    );
+
+
   }
+
+
+
 
   void getMessages() async {
     final messages = await _firestore.collection("drug_details").get();
@@ -37,8 +96,13 @@ class _DashboardState extends State<Dashboard> {
     }
   }
   void getCurrentUSer () async {
+    final fcmToken = await FirebaseMessaging.instance.getToken();
+    print("FCM Token") ;
+    print(fcmToken) ;
+
     try{
       final user = await _auth.currentUser ;
+      // await FirebaseMsg().initNotification() ;
       if(user != null){
         email = user.email! ;
         uid = user.uid ;
@@ -86,6 +150,8 @@ class _DashboardState extends State<Dashboard> {
       ),
     ));
   }
+
+
 
   @override
   Widget build(BuildContext context) {
