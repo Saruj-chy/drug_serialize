@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:drug_serialize/constant.dart';
 import 'package:drug_serialize/dashboard.dart';
 import 'package:drug_serialize/sign_up.dart';
@@ -23,6 +25,7 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
+        exit(0) ;
 
         // //trigger leaving and use own data
         // SystemNavigator.pop() ;
@@ -53,7 +56,7 @@ class _SignInState extends State<SignIn> {
                         style: TextStyle(
                             fontFamily: 'Source Sans Pro',
                             fontSize: 25,
-                            color: Colors.teal,
+                            color: Colors.blue,
                             letterSpacing: 2.5,
                             fontWeight: FontWeight.bold),
                       ),
@@ -154,6 +157,7 @@ class _SignInState extends State<SignIn> {
                             height: 42.0,
                             child: Text(
                               'Sign In',
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ),
@@ -172,7 +176,7 @@ class _SignInState extends State<SignIn> {
                             style: TextStyle(
                                 fontFamily: 'Source Sans Pro',
                                 fontSize: 15,
-                                color: Colors.teal,
+                                color: Colors.blue,
                                 letterSpacing: 2.5,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -191,7 +195,7 @@ class _SignInState extends State<SignIn> {
                     height: MediaQuery.of(context).size.height,
                     child: Center(
                       child: CircularProgressIndicator(
-                        backgroundColor: Colors.red,
+                        backgroundColor: Colors.blue,
                       ),
                     ),
                   ),

@@ -45,7 +45,7 @@ class _CreateDrugState extends State<CreateDrug> {
                           style: TextStyle(
                               fontFamily: 'Source Sans Pro',
                               fontSize: 25,
-                              color: Colors.teal,
+                              color: Colors.blue,
                               letterSpacing: 2.5,
                               fontWeight: FontWeight.bold),
                         ),
@@ -321,6 +321,7 @@ class _CreateDrugState extends State<CreateDrug> {
                               height: 42.0,
                               child: Text(
                                 'Create',
+                                style: TextStyle(color: Colors.white),
                               ),
                             ),
                           ),
@@ -341,7 +342,7 @@ class _CreateDrugState extends State<CreateDrug> {
                     height: MediaQuery.of(context).size.height,
                     child: Center(
                       child: CircularProgressIndicator(
-                        backgroundColor: Colors.red,
+                        backgroundColor: Colors.blue,
                       ),
                     ),
                   ),

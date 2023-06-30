@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<void> backgroundHandler(RemoteMessage message) async {
-  print("---------------------------back ground Handle%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%") ;
   print(message.data.toString());
   print(message.notification!.title);
 }

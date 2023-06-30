@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Timer(
-      const Duration(seconds: 10),
+      const Duration(seconds: 5),
           () {
         print("push") ;
         // Navigate to your favorite place
@@ -57,6 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
           child: Center(
@@ -75,7 +76,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   style: TextStyle(
                       fontFamily: 'Source Sans Pro',
                       fontSize: 40,
-                      color: Colors.teal,
+                      color: Colors.blue,
                       letterSpacing: 2.5,
                       fontWeight: FontWeight.bold),
                 ),

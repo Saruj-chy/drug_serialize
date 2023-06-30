@@ -174,7 +174,7 @@ class _DashboardState extends State<Dashboard> {
                 IconButton(
                   icon: Icon(
                     Icons.add_circle,
-                    color: Colors.green,
+                    color: Colors.blue,
                     size: 40.0,
                   ),
                   onPressed: () {
@@ -186,8 +186,8 @@ class _DashboardState extends State<Dashboard> {
           // backgroundColor: Colors.green,
           body: SafeArea(
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 StreamBuilder<QuerySnapshot>(
                   stream: _firestore.collection("drug_details").orderBy("serial_number", descending: false).snapshots(),
@@ -248,8 +248,6 @@ class _DashboardState extends State<Dashboard> {
         ),
     );
   }
-
-  
 }
 
 
